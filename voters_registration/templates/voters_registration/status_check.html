@@ -22,12 +22,12 @@
             <div class="container">
                 <div class="signup-content">
                     <form method="POST" id="signup-form" class="signup-form">
+                    
+                        {% csrf_token %} 
+                    
                         <h2 class="form-title">Check Here</h2>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="name" id="name" placeholder="Your ID Number                     63-1234567G01"/>
-                        </div>
-                        <div class="form-group">
-                            <input type="name" class="form-input" name="email" id="name" placeholder="Your Surname"/>
+                            <input type="text" class="form-input" name="id_number_log" id="id_number_log" placeholder="Your ID Number                     63-1234567G01"/>
                         </div>
                         
                         <div class="form-group">
