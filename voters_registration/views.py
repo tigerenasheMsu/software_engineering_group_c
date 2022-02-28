@@ -1,9 +1,7 @@
 from unicodedata import name
 from django.shortcuts import render
-from django.http import HttpResponse
 from voters_registration.models import VotersRegistration
-from voters_registration.forms import RegistrationForm
-
+from .models import VotersRegistration
 
 # Create your views here.
 def register(request):
@@ -19,10 +17,16 @@ def register(request):
     return render(request,'voters_registration/registration.html')
     
 def check_Registration_Status(request):
-    
+    qs = VotersRegistration.objects.all()
     id_number_log = request.POST.get('id_number_log', False)
     
     if request.method == "POST":
         if VotersRegistration.objects.filter(id_number=id_number_log).exists():
-            print("Logged In")
+            request.GET.get('id_number_log')
+            context = {
+            'queryset':qs
+            }
+            print(id_number_log)
+            return render(request,'voters_registration/status_check_result.html',context)
+            
     return render(request,'voters_registration/status_check.html')
