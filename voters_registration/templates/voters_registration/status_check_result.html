@@ -25,36 +25,33 @@
                     
                         {% csrf_token %} 
                     
-                        <h2 class="form-title">Check Here</h2>
+                        <h2 class="form-title">Here are your results</h2>
+                        {% for voter_details in queryset %}
                         <div class="form-group">
-                            <input type="text" class="form-input" name="id_number_log" id="id_number_log" placeholder="Your ID Number                     63-1234567G01"/>
+                            <span>Firstname: {{voter_details.firstname}}</span>
                         </div>
                         
                         <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            <span>Surname: {{voter_details.surname}}</span>
                         </div>
+                        
                         <div class="form-group">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Check"/>
+                            <span>Address: {{voter_details.address}}</span>
                         </div>
-                    </form>
+                        
+                        <div class="form-group">
+                            <span>ID Number: {{voter_details.id_number}}</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <span>DOB: {{voter_details.date_of_birth}}</span>
+                        </div>
+                        {%endfor%}
+                        
                     <p class="loginhere">
-                        Not registered ? <a href="/" class="loginhere-link">Register here</a>
+                        Registered ? <a href="{%url 'check_registration_status' %}" class="loginhere-link">Check again here</a>
                     </p>
-                    
-                    <div class="row">
-                        <ul>
-                            {% for voter_details in queryset %}
-                            <li>
-                                <span>Firstname: {{voter_details.firstname}}</span>
-                                <span>Surname: {{voter_details.surname}}</span>
-                                <span>Address: {{voter_details.address}}</span>
-                                <span>ID Number: {{voter_details.id_number}}</span>
-                                <span>Date Of Birth: {{voter_details.date_of_birth}}</span>
-                            </li>
-                            {%endfor%}
-                        </ul>
-                    </div>
+                
                     
                 </div>
             </div>
