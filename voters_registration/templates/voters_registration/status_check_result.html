@@ -28,23 +28,23 @@
                         <h2 class="form-title">Here are your results</h2>
                         {% for voter_details in queryset %}
                         <div class="form-group">
-                            <span>Firstname: {{voter_details.firstname}}</span>
+                            <span><b>Firstname:</b> {{voter_details.firstname}}</span>
                         </div>
                         
                         <div class="form-group">
-                            <span>Surname: {{voter_details.surname}}</span>
+                            <span><b>Surname:</b> {{voter_details.surname}}</span>
                         </div>
                         
                         <div class="form-group">
-                            <span>Address: {{voter_details.address}}</span>
+                            <span><b>Address:</b> {{voter_details.address}}</span>
                         </div>
                         
                         <div class="form-group">
-                            <span>ID Number: {{voter_details.id_number}}</span>
+                            <span><b>ID Number:</b> {{voter_details.id_number}}</span>
                         </div>
                         
                         <div class="form-group">
-                            <span>DOB: {{voter_details.date_of_birth}}</span>
+                            <span><b>DOB:</b> {{voter_details.date_of_birth}}</span>
                         </div>
                         {%endfor%}
                         

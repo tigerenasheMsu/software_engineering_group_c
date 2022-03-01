@@ -1,3 +1,4 @@
+from re import I
 from unicodedata import name
 from django.shortcuts import render
 from voters_registration.models import VotersRegistration
@@ -17,12 +18,14 @@ def register(request):
     return render(request,'voters_registration/registration.html')
     
 def check_Registration_Status(request):
-    qs = VotersRegistration.objects.all()
+    
     id_number_log = request.POST.get('id_number_log', False)
     
     if request.method == "POST":
         if VotersRegistration.objects.filter(id_number=id_number_log).exists():
-            request.GET.get('id_number_log')
+            
+            qs = VotersRegistration.objects.filter(id_number=id_number_log)
+            
             context = {
             'queryset':qs
             }
