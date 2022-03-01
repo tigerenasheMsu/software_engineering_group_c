@@ -26,6 +26,19 @@
                         {% csrf_token %} 
                     
                         <h2 class="form-title">Check Here</h2>
+                        
+                        <div class="form-group">
+                            {%if messages%}
+                            <ul class = "messages">
+                                {%for message in messages%}
+                                    
+                                    <li list-style="none" {%if message.tags%} class="{{message.tags}}" {%endif%}>{{message}}</li>
+                                
+                                {% endfor %}
+                            </ul>
+                        {%endif%}
+                        </div>
+                        
                         <div class="form-group">
                             <input type="text" maxlength="13" minlegth="13" pattern="[0-9]{2}-[0-9]{7}[A-Z]{1}[0-9]{2}" required class="form-input" name="id_number_log" id="id_number_log" placeholder="Your ID Number                     63-1234567G01"/>
                         </div>

@@ -130,6 +130,22 @@ h2 {
 
 .clear {
   clear: both; }
+ul li {
+  list-style: none;
+}  
+.error {
+  list-style: none;
+  background-color: hotpink;
+  color: white;
+  text-align: center;
+}
+    
+.success{
+  list-style: none;
+  background-color: rgba(73, 231, 144, 0.747);
+  color: white;
+  text-align: center;
+}
 
 body {
   font-size: 14px;
@@ -355,5 +371,7 @@ input[type=checkbox]:not(old):checked + label > span:before {
 @media screen and (max-width: 480px) {
   .signup-content {
     padding: 50px 25px; } }
+    
+
 
 /*# sourceMappingURL=style.css.map */

@@ -1,9 +1,9 @@
 from re import I
 from unicodedata import name
 from django.shortcuts import render
-from voters_registration.models import VotersRegistration
 from .models import VotersRegistration
-from datetime import date, datetime
+from django.contrib import messages
+
 
 # Create your views here.
 def register(request):
@@ -15,10 +15,11 @@ def register(request):
         address = request.POST['address']
         date_of_birth = request.POST['date_of_birth']
         if (VotersRegistration.objects.filter(id_number=id_number).exists()):
-            print('Already Exists')
+            messages.error(request,'The voter you are trying to register, already exists')
         else:
             ins = VotersRegistration(firstname=firstname,surname=surname,id_number=id_number,address=address,date_of_birth=date_of_birth)
             ins.save()
+            messages.success(request,'You have been successfuly registered !')
     return render(request,'voters_registration/registration.html')
     
 def check_Registration_Status(request):
@@ -35,5 +36,6 @@ def check_Registration_Status(request):
             }
             print(id_number_log)
             return render(request,'voters_registration/status_check_result.html',context)
-            
+        else:
+            messages.error(request,'The National ID you entered does not exist, kindly try again.')
     return render(request,'voters_registration/status_check.html')
